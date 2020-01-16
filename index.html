@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!-->
+<html>
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AniGet - Get Anime Info</title>
+    <meta name="author" content="hernikplays">
+    <meta name="description" content="Get information about your favourite anime">
+    <meta name="keywords" content="anime,search,get,manga,myanimelist">
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h1 id="title">AniGet</h1>
+    <!--code by hernikplays-->
+    <div id="input">
+        <input type="search" name="search" id="search" placeholder="Enter anime name (e.g Naruto)"><button
+            onclick="searchAnime(document.getElementById('search').value)" id="searchbutton">Search</button>
+    </div>
+    <h1 id="error">a</h1>
+    <div id="items">
+        <img id="img" src=""><br>
+        <div>
+            <p id="fieldname">Name: </p>
+        </div>
+        <div><a id="link" href="">
+                <p id="name"></p>
+            </a></div><br>
+        <div>
+            <p id="fieldname">Type: </p>
+        </div>
+        <div>
+            <p id="type"></p>
+        </div><br>
+        <div>
+            <p id="fieldname">Synopsis: </p>
+        </div><br>
+        <div>
+            <p id="synopsis"></p>
+        </div><br>
+        <div>
+            <p id="fieldname">Airing: </p>
+        </div>
+        <div>
+            <p id="airing"></p>
+        </div><br>
+        <div>
+            <p id="fieldname">Started on/Ended on: </p>
+        </div>
+        <div>
+            <p id="startend"></p>
+        </div><br>
+        <div>
+            <p id="fieldname">Episode Count: </p>
+        </div>
+        <div>
+            <p id="eps"></p>
+        </div><br>
+        <div>
+            <p id="fieldname">MAL Score: </p>
+        </div>
+        <div>
+            <p id="rate"></p>
+        </div>
+        <div>
+            <p id="fieldname">Age Rating: </p>
+        </div>
+        <div>
+            <p id="age"></p>
+        </div>
+
+    </div>
+    <footer id="footer">V1 BETA; Created by <a id="link" href="https://github.com/hernikplays/AniGet">Hernikplays</a></footer>
+    <script src="assets/js/search.js"></script>
+</body>
+
+</html>
