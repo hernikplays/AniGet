@@ -148,7 +148,8 @@ function searchLink(link) {
             let minutes = Math.floor(data.docs[0].at / 60)
             let seconds = data.docs[0].at - minutes * 60;
             document.getElementById("appear").innerHTML = `${minutes}min:${Math.round(seconds)}s`
-
+            //If you want to make the name a link to auto search data, remove // from the following line
+            //document.getElementById("link").href = `https://yourwebsite.com/aniget/?search=${data.docs[0].title_english}`
             document.getElementById("items").style.visibility = "visible";
         })
         .catch(err => {
