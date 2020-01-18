@@ -21,14 +21,16 @@
 
 <body>
     <h1 id="title">AniGet</h1>
+    <div id="buttons"><center><a href="./index.html"><button id="headerbut">Search by Anime Name</button></a><button id="active">Search for Anime by Scene</button></center></div>
     <!--code by hernikplays-->
     <div id="input">
-        <input type="search" name="url" id="search" placeholder="Enter an image URL e.g http://ex.com/a.jpg"><br>
+        <input type="search" name="url" id="search" placeholder="Enter an image URL e.g http://ex.com/a.jpg">
         <button onclick="searchLink(document.getElementById('search').value)" id="submitfile">Submit</button>
     </div>
     <h1 id="error">a</h1>
     <div id="items">
         <img id="img" src="" width="300px"><br>
+        <h1 id="might">This might be...</h1>
         <div>
             <p id="fieldname">English/Japanese Title: </p>
         </div>
@@ -49,7 +51,7 @@
         </div>
 
     </div>
-    <footer id="footer">V2; Created by <a id="link" href="https://github.com/hernikplays/AniGet">Hernikplays</a></footer>
+    <footer id="footer">V2; Created by <a id="link" href="https://github.com/hernikplays/AniGet" >Hernikplays</a>; API by <a href="https://trace.moe" id="link">trace.moe</a></footer>
     <script src="assets/js/search.js"></script>
 </body>
 
