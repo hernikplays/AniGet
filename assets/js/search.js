@@ -29,7 +29,7 @@ function searchAnime(term) {
             let age = document.getElementById("age")
 
             img.src = data.results[0].image_url;
-            name.innerHTML = data.results[0].title
+            
             link.href = data.results[0].url
             syn.innerHTML = data.results[0].synopsis
             rate.innerHTML = data.results[0].score
@@ -53,6 +53,20 @@ function searchAnime(term) {
                 air.innerHTML = "No"
             }
             ep.innerHTML = data.results[0].episodes
+
+            fetch(`https://api.jikan.moe/v3/anime/${data.results[0].mal_id}`)
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        
+        name.innerHTML = data.results[0].title_english + " / " + data.results[0].title_japanese
+    })
+    .catch(err => {
+        document.getElementById("error").innerHTML = "Error: " + err;
+        document.getElementById("error").style.display = "block";
+    })
+
             document.getElementById("items").style.visibility = "visible";
         })
         .catch(err => {
@@ -81,7 +95,7 @@ else if(theme == "light"){
 }
 }*/
 
-function linkornolink(file){
+/*function linkornolink(file){
     document.getElementById("error").style.display = "none";
     if(!document.getElementById('inputfile').files[0]) {
         searchLink(document.getElementById("search").innerHTML)
@@ -89,17 +103,30 @@ function linkornolink(file){
     else{
         searchImg()
     }
-}
+}*/
 
 function searchLink(link){
-    fetch(`https://api.jikan.moe/v3/search/anime?q=${term}&page=1`)
+    fetch(`https://trace.moe/api/search?url=${link}`)
     .then(response => {
         return response.json()
     })
     .then(data => {
         
-        console.log(data)
-        //document.getElementById("items").style.visibility = "visible";
+        console.log(data.docs[0])
+        if(data == "No image received" || data == "Error reading imagenull"){
+            document.getElementById("error").innerHTML = "Error: Your URL is not a valid image";
+        document.getElementById("error").style.display = "block";
+        }
+
+        document.getElementById("img").src = document.getElementById('search').value
+        document.getElementById("name").innerHTML = data.docs[0].title_english + " / " + data.docs[0].title_native
+        document.getElementById("episode").innerHTML = data.docs[0].episode
+
+        let minutes = Math.floor(data.docs[0].at / 60)
+        let seconds = data.docs[0].at - minutes * 60;
+        document.getElementById("appear").innerHTML = `${minutes}min:${Math.round(seconds)}s`
+
+        document.getElementById("items").style.visibility = "visible";
     })
     .catch(err => {
         document.getElementById("error").innerHTML = "Error: " + err;
@@ -107,8 +134,8 @@ function searchLink(link){
     })
 }
 
-function searchImg(){
+/*function searchImg(){
     document.getElementById("img").src = URL.createObjectURL(document.getElementById('inputfile').files[0]);
 
     document.getElementById("items").style.visibility = "visible";
-}
+}*/

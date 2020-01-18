@@ -23,65 +23,33 @@
     <h1 id="title">AniGet</h1>
     <!--code by hernikplays-->
     <div id="input">
-        <input type="file" accept=".jpg,.png" name="file" id="inputfile">
-        <label for="inputfile">Choose a file</label><br>
-        <input type="search" name="url" id="search" placeholder="Or enter a direct image URL (e.g http://foobar.com/a.jpg)"><br>
-        <button onclick="linkornolink()" id="submitfile">Submit</button>
+        <input type="search" name="url" id="search" placeholder="Enter an image URL e.g http://ex.com/a.jpg"><br>
+        <button onclick="searchLink(document.getElementById('search').value)" id="submitfile">Submit</button>
     </div>
     <h1 id="error">a</h1>
     <div id="items">
-        <img id="img" src="" width="100px"><br>
+        <img id="img" src="" width="300px"><br>
         <div>
-            <p id="fieldname">Name: </p>
+            <p id="fieldname">English/Japanese Title: </p>
         </div>
         <div><a id="link" href="">
                 <p id="name"></p>
             </a></div><br>
         <div>
-            <p id="fieldname">Type: </p>
+            <p id="fieldname">Episode: </p>
         </div>
         <div>
-            <p id="type"></p>
+            <p id="episode"></p>
         </div><br>
         <div>
-            <p id="fieldname">Synopsis: </p>
+            <p id="fieldname">Scene appears at: </p>
         </div><br>
         <div>
-            <p id="synopsis"></p>
-        </div><br>
-        <div>
-            <p id="fieldname">Airing: </p>
-        </div>
-        <div>
-            <p id="airing"></p>
-        </div><br>
-        <div>
-            <p id="fieldname">Started on/Ended on: </p>
-        </div>
-        <div>
-            <p id="startend"></p>
-        </div><br>
-        <div>
-            <p id="fieldname">Episode Count: </p>
-        </div>
-        <div>
-            <p id="eps"></p>
-        </div><br>
-        <div>
-            <p id="fieldname">MAL Score: </p>
-        </div>
-        <div>
-            <p id="rate"></p>
-        </div><br>
-        <div>
-            <p id="fieldname">Age Rating: </p>
-        </div>
-        <div>
-            <p id="age"></p>
+            <p id="appear"></p>
         </div>
 
     </div>
-    <footer id="footer">V1 BETA; Created by <a id="link" href="https://github.com/hernikplays/AniGet">Hernikplays</a></footer>
+    <footer id="footer">V2; Created by <a id="link" href="https://github.com/hernikplays/AniGet">Hernikplays</a></footer>
     <script src="assets/js/search.js"></script>
 </body>
 
