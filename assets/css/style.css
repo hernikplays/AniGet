@@ -24,6 +24,9 @@ input{
 img{
     margin-top: 5px;
 }
+#fieldname{
+    font-weight: bold;
+}
 #input{
     text-align: center;
 }
