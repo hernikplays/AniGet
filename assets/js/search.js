@@ -59,8 +59,13 @@ function searchAnime(term) {
         return response.json()
     })
     .then(data => {
+        console.log(data.producers)
+        name.innerHTML = data.title_english + " / " + data.title_japanese
+        for (i in data.studios) {
+            document.getElementById("studio").innerHTML += data.studios[i].name;
+          } 
+         
         
-        name.innerHTML = data.results[0].title_english + " / " + data.results[0].title_japanese
     })
     .catch(err => {
         document.getElementById("error").innerHTML = "Error: " + err;
