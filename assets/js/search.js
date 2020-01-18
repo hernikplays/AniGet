@@ -1,5 +1,5 @@
 /*CODE CREATED BY HERNIKPLAYS, LICENSED UNDER GNU AGPLV3 LICENSE
-API BY JIKAN.MOE*/
+API BY JIKAN.MOE and TRACE.MOE*/
 let theme = "dark";
 function searchAnime(term) {
     document.getElementById("error").style.display = "none";
@@ -80,3 +80,35 @@ else if(theme == "light"){
     theme = "dark"
 }
 }*/
+
+function linkornolink(file){
+    document.getElementById("error").style.display = "none";
+    if(!document.getElementById('inputfile').files[0]) {
+        searchLink(document.getElementById("search").innerHTML)
+}
+    else{
+        searchImg()
+    }
+}
+
+function searchLink(link){
+    fetch(`https://api.jikan.moe/v3/search/anime?q=${term}&page=1`)
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        
+        console.log(data)
+        //document.getElementById("items").style.visibility = "visible";
+    })
+    .catch(err => {
+        document.getElementById("error").innerHTML = "Error: " + err;
+        document.getElementById("error").style.display = "block";
+    })
+}
+
+function searchImg(){
+    document.getElementById("img").src = URL.createObjectURL(document.getElementById('inputfile').files[0]);
+
+    document.getElementById("items").style.visibility = "visible";
+}
