@@ -162,3 +162,10 @@ function searchLink(link) {
 
     document.getElementById("items").style.visibility = "visible";
 }*/
+function searchfromparams(){
+    var url = new URL(window.location);
+    var par = url.searchParams.get("search");
+    if(!par) return;
+
+    searchAnime(par)
+}
