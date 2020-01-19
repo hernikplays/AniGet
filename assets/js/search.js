@@ -135,9 +135,9 @@ function searchLink(link) {
         })
         .then(data => {
 
-            console.log(data.docs[0])
+            console.log(data)
             if (data == "No image received" || data == "Error reading imagenull") {
-                document.getElementById("error").innerHTML = "Error: Your URL is not a valid image";
+                document.getElementById("error").innerHTML = "Error: Your URL is not a valid image or cannot be accessed";
                 document.getElementById("error").style.display = "block";
             }
 
