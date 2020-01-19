@@ -139,6 +139,7 @@ function searchLink(link) {
             if (data == "No image received" || data == "Error reading imagenull") {
                 document.getElementById("error").innerHTML = "Error: Your URL is not a valid image or cannot be accessed";
                 document.getElementById("error").style.display = "block";
+                return;
             }
 
             document.getElementById("img").src = document.getElementById('search').value
