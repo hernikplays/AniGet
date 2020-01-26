@@ -164,10 +164,47 @@ function searchLink(link) {
 
     document.getElementById("items").style.visibility = "visible";
 }*/
-function searchfromparams(){
+function searchfromparams() {
     var url = new URL(window.location);
     var par = url.searchParams.get("search");
-    if(!par) return;
+    if (!par) return;
 
     searchAnime(par)
 }
+
+function searchManga() {
+    fetch(`https://api.jikan.moe/v3/search/manga?q=${term}&page=1`)
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            fetch(`https://api.jikan.moe/v3/manga/${data.response[0].mal_id}`)
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => {
+                    document.getElementById("name").innerHTML = data.title
+                    document.getElementById("link").href = data.url
+                    if (data.publishing == true) {
+                        document.getElementById("publish").innerHTML = "Yes";
+                    } else {
+                        document.getElementById("publish").innerHTML = "No";
+                    }
+                    document.getElementById("synopsis").href = data.synopsis
+                    document.getElementById("img").src = data.image_url
+                    if (data.publishing == false) {
+                        var started = new Date(data.published.from).toLocaleDateString();
+                        var ended = new Date(data.published.to).toLocaleDateString();
+                        startend.innerHTML = started + " / " + ended
+                    }
+                    else{
+                        var started = new Date(data.published.from).toLocaleDateString();
+                        startend.innerHTML = started + " / Still Publishing"
+                    }
+                    document.getElementById("rate").innerHTML = data.score;
+                })
+            
+        })
+}
+/*
+ */
