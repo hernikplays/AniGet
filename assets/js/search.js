@@ -178,6 +178,7 @@ function searchManga(term) {
             return response.json()
         })
         .then(data => {
+        console.log(data.response)
             fetch(`https://api.jikan.moe/v3/manga/${data.response[0].mal_id}`)
                 .then(response => {
                     return response.json()
