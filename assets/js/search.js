@@ -172,7 +172,7 @@ function searchfromparams() {
     searchAnime(par)
 }
 
-function searchManga() {
+function searchManga(term) {
     fetch(`https://api.jikan.moe/v3/search/manga?q=${term}&page=1`)
         .then(response => {
             return response.json()
