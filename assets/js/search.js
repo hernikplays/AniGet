@@ -171,7 +171,7 @@ function searchfromparams() {
     if (!par) return;  
     /*
     !!!WARNING!!!
-    This will not work if you change the .html filenames! This is currently a temporary solution
+    This will not work if you change the foldernames! This is currently a temporary solution
     !!!WARNING!!!
     */
     if(window.location.includes("manga")){
