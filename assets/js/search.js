@@ -174,8 +174,7 @@ function searchfromparams() {
     This will not work if you change the foldernames! This is currently a temporary solution
     !!!WARNING!!!
     */
-   let inc = window.location
-    if(inc.includes("manga")){
+    if(url.includes("manga")){
         searchManga(par)
     }
     else{ 
