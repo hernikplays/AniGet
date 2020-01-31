@@ -178,12 +178,12 @@ function searchManga(term) {
             return response.json()
         })
         .then(data => {
-        console.log(data.response)
-            fetch(`https://api.jikan.moe/v3/manga/${data.response[0].mal_id}`)
+            fetch(`https://api.jikan.moe/v3/manga/${data.results[0].mal_id}`)
                 .then(response => {
                     return response.json()
                 })
                 .then(data => {
+                    console.log(data)
                     document.getElementById("name").innerHTML = data.title
                     document.getElementById("link").href = data.url
                     if (data.publishing == true) {
@@ -191,7 +191,7 @@ function searchManga(term) {
                     } else {
                         document.getElementById("publish").innerHTML = "No";
                     }
-                    document.getElementById("synopsis").href = data.synopsis
+                    document.getElementById("synopsis").innerHTML = data.synopsis
                     document.getElementById("img").src = data.image_url
                     if (data.publishing == false) {
                         var started = new Date(data.published.from).toLocaleDateString();
@@ -203,8 +203,12 @@ function searchManga(term) {
                         startend.innerHTML = started + " / Still Publishing"
                     }
                     document.getElementById("rate").innerHTML = data.score;
+                    document.getElementById("items").style.visibility = "visible";
                 })
             
+        }).catch(err => {
+            document.getElementById("error").innerHTML = "Error: " + err;
+            document.getElementById("error").style.display = "block";
         })
 }
 /*
