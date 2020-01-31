@@ -174,7 +174,8 @@ function searchfromparams() {
     This will not work if you change the foldernames! This is currently a temporary solution
     !!!WARNING!!!
     */
-    if(url.includes("manga")){
+   
+    if(window.location.href.indexOf("manga")){
         searchManga(par)
     }
     else{ 
