@@ -177,7 +177,7 @@ function searchfromparams() {
     if(window.location.includes("manga")){
         searchManga(par)
     }
-    else if(window.location.includes("index")){
+    else{ 
         searchAnime(par)
     }
     
