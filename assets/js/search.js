@@ -167,9 +167,20 @@ function searchLink(link) {
 function searchfromparams() {
     var url = new URL(window.location);
     var par = url.searchParams.get("search");
-    if (!par) return;
-
-    searchAnime(par)
+    
+    if (!par) return;  
+    /*
+    !!!WARNING!!!
+    This will not work if you change the .html filenames! This is currently a temporary solution
+    !!!WARNING!!!
+    */
+    if(window.location.includes("manga")){
+        searchManga(par)
+    }
+    else if(window.location.includes("index")){
+        searchAnime(par)
+    }
+    
 }
 
 function searchManga(term) {
