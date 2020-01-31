@@ -183,7 +183,6 @@ function searchManga(term) {
                     return response.json()
                 })
                 .then(data => {
-                    console.log(data)
                     document.getElementById("name").innerHTML = data.title
                     document.getElementById("link").href = data.url
                     if (data.publishing == true) {
@@ -202,7 +201,32 @@ function searchManga(term) {
                         var started = new Date(data.published.from).toLocaleDateString();
                         startend.innerHTML = started + " / Still Publishing"
                     }
+
                     document.getElementById("rate").innerHTML = data.score;
+
+                    if(data.chapters == null && data.volumes == null){
+                        document.getElementById("volchap").innerHTML = "?? / ??";
+                    }
+                    else{
+                        document.getElementById("volchap").innerHTML = `${data.volumes} / ${data.chapters}`;
+                    }
+                    
+                    for (i in data.genres) {
+                        if (i == 0) {
+                            document.getElementById("genres").innerHTML += data.genres[i].name;
+                        } else {
+                            document.getElementById("genres").innerHTML += ", " + data.genres[i].name
+                        }
+                    }
+
+                    for (i in data.authors) {
+                        if (i == 0) {
+                            document.getElementById("author").innerHTML += `<a id="link" href="${data.authors[i].url}">${data.authors[i].name}</a>`;
+                        } else {
+                            document.getElementById("author").innerHTML += `<a id="link" href="${data.authors[i].url}">, ${data.authors[i].name}</a>`
+                        }
+                    }
+
                     document.getElementById("items").style.visibility = "visible";
                 })
             
