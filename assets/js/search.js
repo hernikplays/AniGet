@@ -59,8 +59,11 @@ function searchAnime(term) {
                     return response.json()
                 })
                 .then(data => {
-                    name.innerHTML = data.title_english + " / " + data.title_japanese
-
+                    if (data.title_english == null || data.title_japanese == null) {
+                        name.innerHTML = data.title;
+                    } else {
+                        name.innerHTML = data.title_english + " / " + data.title_japanese
+                    }
                     for (i in data.studios) {
                         if (i == 0) {
                             document.getElementById("studio").innerHTML += data.studios[i].name;
@@ -167,21 +170,20 @@ function searchLink(link) {
 function searchfromparams() {
     var url = new URL(window.location);
     var par = url.searchParams.get("search");
-    
-    if (!par) return;  
+
+    if (!par) return;
     /*
     !!!WARNING!!!
     This will not work if you change the foldernames! This is currently a temporary solution
     !!!WARNING!!!
     */
-   
-    if(window.location.href.indexOf("manga")){
+
+    if (window.location.href.indexOf("manga")) {
         searchManga(par)
-    }
-    else{ 
+    } else {
         searchAnime(par)
     }
-    
+
 }
 
 function searchManga(term) {
@@ -208,21 +210,19 @@ function searchManga(term) {
                         var started = new Date(data.published.from).toLocaleDateString();
                         var ended = new Date(data.published.to).toLocaleDateString();
                         startend.innerHTML = started + " / " + ended
-                    }
-                    else{
+                    } else {
                         var started = new Date(data.published.from).toLocaleDateString();
                         startend.innerHTML = started + " / Still Publishing"
                     }
 
                     document.getElementById("rate").innerHTML = data.score;
 
-                    if(data.chapters == null && data.volumes == null){
+                    if (data.chapters == null && data.volumes == null) {
                         document.getElementById("volchap").innerHTML = "?? / ??";
-                    }
-                    else{
+                    } else {
                         document.getElementById("volchap").innerHTML = `${data.volumes} / ${data.chapters}`;
                     }
-                    
+
                     for (i in data.genres) {
                         if (i == 0) {
                             document.getElementById("genres").innerHTML += data.genres[i].name;
@@ -241,7 +241,7 @@ function searchManga(term) {
 
                     document.getElementById("items").style.visibility = "visible";
                 })
-            
+
         }).catch(err => {
             document.getElementById("error").innerHTML = "Error: " + err;
             document.getElementById("error").style.display = "block";
