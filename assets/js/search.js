@@ -173,17 +173,8 @@ function searchfromparams() {
     var par = url.searchParams.get("search");
 
     if (!par) return;
-    /*
-    !!!WARNING!!!
-    This will not work if you change the foldernames! This is currently a temporary solution
-    !!!WARNING!!!
-    */
-
-    if (window.location.href.indexOf("manga") != -1) {
-        searchManga(par)
-    } else {
         searchAnime(par)
-    }
+
 
 }
 
