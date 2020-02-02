@@ -17,7 +17,6 @@ function searchAnime(term) {
         .then(data => {
 
             if (data.results.length == 0) return console.log("Nothing found")
-            console.log(data.results[0])
 
             let img = document.getElementById("img")
             let name = document.getElementById("name")
@@ -61,8 +60,10 @@ function searchAnime(term) {
                 .then(data => {
                     if (data.title_english == null || data.title_japanese == null) {
                         name.innerHTML = data.title;
+                        console.log("only")
                     } else {
                         name.innerHTML = data.title_english + " / " + data.title_japanese
+                        console.log("both")
                     }
                     for (i in data.studios) {
                         if (i == 0) {
@@ -178,7 +179,7 @@ function searchfromparams() {
     !!!WARNING!!!
     */
 
-    if (window.location.href.indexOf("manga")) {
+    if (window.location.href.indexOf("manga") != -1) {
         searchManga(par)
     } else {
         searchAnime(par)
