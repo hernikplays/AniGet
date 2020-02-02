@@ -60,10 +60,8 @@ function searchAnime(term) {
                 .then(data => {
                     if (data.title_english == null || data.title_japanese == null) {
                         name.innerHTML = data.title;
-                        console.log("only")
                     } else {
                         name.innerHTML = data.title_english + " / " + data.title_japanese
-                        console.log("both")
                     }
                     for (i in data.studios) {
                         if (i == 0) {
